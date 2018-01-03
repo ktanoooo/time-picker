@@ -11,8 +11,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_dom__);
-throw new Error("Cannot find module \"moment\"");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rc_time_picker_date_fns__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__ = __webpack_require__(12);
+
 
 
 
@@ -22,12 +22,12 @@ throw new Error("Cannot find module \"moment\"");
 __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
   'div',
   null,
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_rc_time_picker_date_fns__["a" /* default */], { defaultValue: __WEBPACK_IMPORTED_MODULE_3_moment___default()(), showHour: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_rc_time_picker_date_fns__["a" /* default */], { defaultValue: __WEBPACK_IMPORTED_MODULE_3_moment___default()(), showMinute: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_rc_time_picker_date_fns__["a" /* default */], { defaultValue: __WEBPACK_IMPORTED_MODULE_3_moment___default()(), showSecond: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_rc_time_picker_date_fns__["a" /* default */], { defaultValue: __WEBPACK_IMPORTED_MODULE_3_moment___default()(), showMinute: false, showSecond: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_rc_time_picker_date_fns__["a" /* default */], { defaultValue: __WEBPACK_IMPORTED_MODULE_3_moment___default()(), showHour: false, showSecond: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_rc_time_picker_date_fns__["a" /* default */], { defaultValue: __WEBPACK_IMPORTED_MODULE_3_moment___default()(), showHour: false, showMinute: false })
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showHour: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showMinute: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showSecond: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showMinute: false, showSecond: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showHour: false, showSecond: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showHour: false, showMinute: false })
 ), document.getElementById('__react-content'));
 
 /***/ }),

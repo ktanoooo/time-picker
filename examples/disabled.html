@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>disabled.js - example - rc-time-picker-date-fns@3.2.3</title>
+  <title>disabled.js - example - rc-time-picker-date-fns@3.2.4</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,7 +263,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-time-picker-date-fns@3.2.3</h1>
+      <h1>rc-time-picker-date-fns@3.2.4</h1>
 
       <p>React TimePicker using date-fns</p>
     </div>
@@ -276,14 +276,12 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDom <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 
-<span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
-
 <span class="hljs-keyword">import</span> TimePicker <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker-date-fns'</span>;
 
 <span class="hljs-keyword">const</span> showSecond = <span class="hljs-literal">true</span>;
 <span class="hljs-keyword">const</span> str = showSecond ? <span class="hljs-string">'HH:mm:ss'</span> : <span class="hljs-string">'HH:mm'</span>;
 
-<span class="hljs-keyword">const</span> now = moment().hour(<span class="hljs-number">14</span>).minute(<span class="hljs-number">30</span>);
+<span class="hljs-keyword">const</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2018-01-03 14:30:00'</span>);
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateOptions</span>(<span class="hljs-params">length, excludedOptions</span>) </span>{
   <span class="hljs-keyword">const</span> arr = [];
