@@ -18745,6 +18745,7 @@ Picker.defaultProps = {
   className: '',
   popupClassName: '',
   align: {},
+  defaultValue: new Date(),
   defaultOpenValue: new Date(),
   allowEmpty: true,
   showHour: true,
