@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>step.js - example - rc-time-picker-date-fns@3.2.2</title>
+  <title>step.js - example - rc-time-picker-date-fns@3.2.3</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -257,24 +257,24 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
   }
   </script>
-  
+  <link rel="stylesheet" href="../common.css" />
 </head>
 
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-time-picker-date-fns@3.2.2</h1>
+      <h1>rc-time-picker-date-fns@3.2.3</h1>
 
       <p>React TimePicker using date-fns</p>
     </div>
     <div class="example" id="__react-content"></div>
 
-    <div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> <span class="hljs-string">'rc-time-picker/assets/index.less'</span>;
+    <div class="highlight"><pre><code language="js"><span class="hljs-keyword">import</span> <span class="hljs-string">'rc-time-picker-date-fns/assets/index.css'</span>;
 
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDom <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 <span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
-<span class="hljs-keyword">import</span> TimePicker <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker'</span>;
+<span class="hljs-keyword">import</span> TimePicker <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker-date-fns'</span>;
 
 ReactDom.render(
   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">TimePicker</span> <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">{moment()}</span> <span class="hljs-attribute">showSecond</span>=<span class="hljs-value">{false}</span> <span class="hljs-attribute">minuteStep</span>=<span class="hljs-value">{15}</span> /&gt;</span>
