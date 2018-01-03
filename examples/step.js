@@ -19,7 +19,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showSecond: false, minuteStep: 15 }), document.getElementById('__react-content'));
+__WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], { defaultValue: new Date(), showSecond: false, minuteStep: 15 }), document.getElementById('__react-content'));
 
 /***/ }),
 

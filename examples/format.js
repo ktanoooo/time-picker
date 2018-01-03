@@ -22,12 +22,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
   'div',
   null,
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showHour: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showMinute: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showSecond: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showMinute: false, showSecond: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showHour: false, showSecond: false }),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], { defaultValue: new Date(), showHour: false, showMinute: false })
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], { defaultValue: new Date(), showHour: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], { defaultValue: new Date(), showMinute: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], { defaultValue: new Date(), showSecond: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], { defaultValue: new Date(), showMinute: false, showSecond: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], { defaultValue: new Date(), showHour: false, showSecond: false }),
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], { defaultValue: new Date(), showHour: false, showMinute: false })
 ), document.getElementById('__react-content'));
 
 /***/ }),

@@ -71,7 +71,7 @@ var App = function (_React$Component) {
           { onClick: this.toggleOpen },
           'Toggle open'
         ),
-        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_time_picker_date_fns__["a" /* default */], {
+        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_time_picker_date_fns__["b" /* default */], {
           open: this.state.open,
           onOpen: this.setOpen,
           onClose: this.setOpen,

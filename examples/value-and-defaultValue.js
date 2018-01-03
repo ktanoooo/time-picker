@@ -20,14 +20,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_dom__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rc_time_picker_date_fns__ = __webpack_require__(12);
-throw new Error("Cannot find module \"rc-time-picker-date-fns/date-utils\"");
 
 
 
 
 /* eslint no-console:0 */
-
-
 
 
 
@@ -53,7 +50,7 @@ var App = function (_React$Component) {
     return _ret = (_temp = (_this = __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_possibleConstructorReturn___default()(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       value: new Date()
     }, _this.handleValueChange = function (value) {
-      console.log(value && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8_rc_time_picker_date_fns_date_utils__["formatTime"])(value, 'HH:mm:ss'));
+      console.log(value && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7_rc_time_picker_date_fns__["a" /* formatTime */])(value, 'HH:mm:ss'));
       _this.setState({ value: value });
     }, _this.clear = function () {
       _this.setState({
@@ -68,11 +65,11 @@ var App = function (_React$Component) {
       return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
         'div',
         null,
-        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_time_picker_date_fns__["a" /* default */], {
+        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_time_picker_date_fns__["b" /* default */], {
           defaultValue: this.state.value,
           onChange: this.handleValueChange
         }),
-        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_time_picker_date_fns__["a" /* default */], {
+        __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_rc_time_picker_date_fns__["b" /* default */], {
           value: this.state.value,
           onChange: this.handleValueChange
         }),

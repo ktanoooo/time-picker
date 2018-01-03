@@ -67,7 +67,7 @@ __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
     null,
     'Disabled picker'
   ),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], {
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], {
     defaultValue: now,
     disabled: true,
     onChange: onChange
@@ -77,7 +77,7 @@ __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
     null,
     'Disabled options'
   ),
-  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* default */], {
+  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], {
     showSecond: showSecond,
     defaultValue: now,
     className: 'xxx',
