@@ -26,7 +26,7 @@ var format = 'h:mm a';
 var now = new Date();
 
 function onChange(value) {
-  console.log(value && value.format(format));
+  console.log(value && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["a" /* formatTime */])(value, format));
 }
 
 __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_rc_time_picker_date_fns__["b" /* default */], {
