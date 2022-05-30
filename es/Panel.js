@@ -96,7 +96,8 @@ var Panel = function (_Component) {
           onKeyDown = _props.onKeyDown,
           hourStep = _props.hourStep,
           minuteStep = _props.minuteStep,
-          secondStep = _props.secondStep;
+          secondStep = _props.secondStep,
+          clearIcon = _props.clearIcon;
       var _state = this.state,
           value = _state.value,
           currentSelectPanel = _state.currentSelectPanel;
@@ -135,7 +136,8 @@ var Panel = function (_Component) {
           onClear: onClear,
           allowEmpty: allowEmpty,
           focusOnOpen: focusOnOpen,
-          onKeyDown: onKeyDown
+          onKeyDown: onKeyDown,
+          clearIcon: clearIcon
         }),
         React.createElement(Combobox, {
           prefixCls: prefixCls,
@@ -189,7 +191,8 @@ Panel.propTypes = {
   secondStep: PropTypes.number,
   addon: PropTypes.func,
   focusOnOpen: PropTypes.bool,
-  onKeyDown: PropTypes.func
+  onKeyDown: PropTypes.func,
+  clearIcon: PropTypes.node
 };
 Panel.defaultProps = {
   prefixCls: 'rc-time-picker-panel',

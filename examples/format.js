@@ -22,7 +22,7 @@ ReactDom.render(
     <TimePicker
       defaultValue={new Date()}
       showSecond={false}
-      format="a hh:mm"
+      format="a h:mm"
       formatLocale="ja"
     />
   </div>,

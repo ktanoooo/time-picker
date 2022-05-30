@@ -112,7 +112,8 @@ var Picker = function (_Component) {
           hourStep = _props2.hourStep,
           minuteStep = _props2.minuteStep,
           secondStep = _props2.secondStep,
-          formatLocale = _props2.formatLocale;
+          formatLocale = _props2.formatLocale,
+          clearIcon = _props2.clearIcon;
 
       return React.createElement(Panel, {
         clearText: clearText,
@@ -140,7 +141,8 @@ var Picker = function (_Component) {
         secondStep: secondStep,
         addon: addon,
         focusOnOpen: focusOnOpen,
-        onKeyDown: onKeyDown
+        onKeyDown: onKeyDown,
+        clearIcon: clearIcon
       });
     }
   }, {
@@ -220,7 +222,8 @@ var Picker = function (_Component) {
           onFocus = _props5.onFocus,
           onBlur = _props5.onBlur,
           autoFocus = _props5.autoFocus,
-          formatLocale = _props5.formatLocale;
+          formatLocale = _props5.formatLocale,
+          inputIcon = _props5.inputIcon;
       var _state = this.state,
           open = _state.open,
           value = _state.value;
@@ -261,7 +264,8 @@ var Picker = function (_Component) {
             autoFocus: autoFocus,
             onChange: noop
           }),
-          React.createElement('span', { className: prefixCls + '-icon' })
+          inputIcon || React.createElement('span', { className: prefixCls + '-icon' }),
+          ' '
         )
       );
     }
@@ -311,7 +315,9 @@ Picker.propTypes = {
   secondStep: PropTypes.number,
   focusOnOpen: PropTypes.bool,
   onKeyDown: PropTypes.func,
-  autoFocus: PropTypes.bool
+  autoFocus: PropTypes.bool,
+  inputIcon: PropTypes.node,
+  clearIcon: PropTypes.node
 };
 Picker.defaultProps = {
   clearText: 'clear',
