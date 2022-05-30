@@ -31,7 +31,7 @@ change from "AM, PM" to "午前, 午後".
 ```
 import TimePicker from 'rc-time-picker-date-fns';
 import ReactDOM from 'react-dom';
-ReactDOM.render(<TimePicker format="a hh:m" formatLocale="ja" />, container);
+ReactDOM.render(<TimePicker format="a h:mm" formatLocale="ja" />, container);
 ```
 
 API
