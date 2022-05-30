@@ -1,11 +1,11 @@
 /* eslint no-console:0 */
 
-import 'rc-time-picker-date-fns/assets/index.less';
+import 'rc-time-picker-date-fns-format-ja/assets/index.less';
 
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import TimePicker from 'rc-time-picker-date-fns';
+import TimePicker from 'rc-time-picker-date-fns-format-ja';
 
 const showSecond = true;
 const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
@@ -42,17 +42,13 @@ function disabledMinutes(h) {
 }
 
 function disabledSeconds(h, m) {
-  return [h + m % 60];
+  return [h + (m % 60)];
 }
 
 ReactDom.render(
   <div>
     <h3>Disabled picker</h3>
-    <TimePicker
-      defaultValue={now}
-      disabled
-      onChange={onChange}
-    />
+    <TimePicker defaultValue={now} disabled onChange={onChange} />
     <h3>Disabled options</h3>
     <TimePicker
       showSecond={showSecond}
@@ -63,5 +59,6 @@ ReactDom.render(
       disabledMinutes={disabledMinutes}
       disabledSeconds={disabledSeconds}
     />
-  </div>
-, document.getElementById('__react-content'));
+  </div>,
+  document.getElementById('__react-content')
+);

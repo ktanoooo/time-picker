@@ -1,6 +1,6 @@
 {
-  "name": "rc-time-picker-date-fns",
   "version": "3.2.8",
+  "name": "rc-time-picker-date-fns-format-ja",
   "description": "React TimePicker using date-fns",
   "keywords": [
     "react",

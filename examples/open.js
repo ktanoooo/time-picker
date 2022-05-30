@@ -1,11 +1,11 @@
 /* eslint no-console:0 */
 
-import 'rc-time-picker-date-fns/assets/index.less';
+import 'rc-time-picker-date-fns-format-ja/assets/index.less';
 
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import TimePicker from 'rc-time-picker-date-fns';
+import TimePicker from 'rc-time-picker-date-fns-format-ja';
 
 class App extends React.Component {
   state = {
@@ -13,12 +13,12 @@ class App extends React.Component {
   };
   setOpen = ({ open }) => {
     this.setState({ open });
-  }
+  };
   toggleOpen = () => {
     this.setState({
       open: !this.state.open,
     });
-  }
+  };
   render() {
     return (
       <div>
@@ -34,7 +34,4 @@ class App extends React.Component {
   }
 }
 
-ReactDom.render(
-  <App />,
-  document.getElementById('__react-content')
-);
+ReactDom.render(<App />, document.getElementById('__react-content'));
