@@ -10,10 +10,19 @@ import Combobox from './Combobox';
 
 function noop() {}
 
-function generateOptions(length, disabledOptions, hideDisabledOptions, step = 1) {
+function generateOptions(
+  length,
+  disabledOptions,
+  hideDisabledOptions,
+  step = 1
+) {
   const arr = [];
   for (let value = 0; value < length; value += step) {
-    if (!disabledOptions || disabledOptions.indexOf(value) < 0 || !hideDisabledOptions) {
+    if (
+      !disabledOptions ||
+      disabledOptions.indexOf(value) < 0 ||
+      !hideDisabledOptions
+    ) {
       arr.push(value);
     }
   }
@@ -29,6 +38,7 @@ class Panel extends Component {
     value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     placeholder: PropTypes.string,
     format: PropTypes.string,
+    formatLocale: PropTypes.string,
     disabledHours: PropTypes.func,
     disabledMinutes: PropTypes.func,
     disabledSeconds: PropTypes.func,
@@ -56,7 +66,7 @@ class Panel extends Component {
     disabledHours: noop,
     disabledMinutes: noop,
     disabledSeconds: noop,
-    defaultOpenValue: new Date,
+    defaultOpenValue: new Date(),
     use12Hours: false,
     addon: noop,
     onKeyDown: noop,
@@ -80,11 +90,11 @@ class Panel extends Component {
   onChange = (newValue) => {
     this.setState({ value: newValue });
     this.props.onChange(newValue);
-  }
+  };
 
   onCurrentSelectPanelChange = (currentSelectPanel) => {
     this.setState({ currentSelectPanel });
-  }
+  };
 
   // https://github.com/ant-design/ant-design/issues/5829
   close() {
@@ -93,39 +103,69 @@ class Panel extends Component {
 
   render() {
     const {
-      prefixCls, className, placeholder, disabledHours, disabledMinutes,
-      disabledSeconds, hideDisabledOptions, allowEmpty, showHour, showMinute, showSecond,
-      format, defaultOpenValue, clearText, onEsc, addon, use12Hours, onClear,
-      focusOnOpen, onKeyDown, hourStep, minuteStep, secondStep,
+      prefixCls,
+      className,
+      placeholder,
+      disabledHours,
+      disabledMinutes,
+      disabledSeconds,
+      hideDisabledOptions,
+      allowEmpty,
+      showHour,
+      showMinute,
+      showSecond,
+      format,
+      formatLocale,
+      defaultOpenValue,
+      clearText,
+      onEsc,
+      addon,
+      use12Hours,
+      onClear,
+      focusOnOpen,
+      onKeyDown,
+      hourStep,
+      minuteStep,
+      secondStep,
     } = this.props;
 
-    const {
-      value, currentSelectPanel,
-    } = this.state;
+    const { value, currentSelectPanel } = this.state;
 
     const disabledHourOptions = disabledHours();
-    const disabledMinuteOptions = disabledMinutes(value ? getHours(value) : null);
+    const disabledMinuteOptions = disabledMinutes(
+      value ? getHours(value) : null
+    );
     const disabledSecondOptions = disabledSeconds(
-      value
-        ? getHours(value)
-        : null,
-      value
-        ? getMinutes(value)
-        : null
-      );
+      value ? getHours(value) : null,
+      value ? getMinutes(value) : null
+    );
 
     const hourOptions = generateOptions(
-      24, disabledHourOptions, hideDisabledOptions, hourStep
+      24,
+      disabledHourOptions,
+      hideDisabledOptions,
+      hourStep
     );
     const minuteOptions = generateOptions(
-      60, disabledMinuteOptions, hideDisabledOptions, minuteStep
+      60,
+      disabledMinuteOptions,
+      hideDisabledOptions,
+      minuteStep
     );
     const secondOptions = generateOptions(
-      60, disabledSecondOptions, hideDisabledOptions, secondStep
+      60,
+      disabledSecondOptions,
+      hideDisabledOptions,
+      secondStep
     );
 
     return (
-      <div className={classNames({ [`${prefixCls}-inner`]: true, [className]: !!className })}>
+      <div
+        className={classNames({
+          [`${prefixCls}-inner`]: true,
+          [className]: !!className,
+        })}
+      >
         <Header
           clearText={clearText}
           prefixCls={prefixCls}
@@ -134,6 +174,7 @@ class Panel extends Component {
           currentSelectPanel={currentSelectPanel}
           onEsc={onEsc}
           format={format}
+          formatLocale={formatLocale}
           placeholder={placeholder}
           hourOptions={hourOptions}
           minuteOptions={minuteOptions}

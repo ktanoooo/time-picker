@@ -31,6 +31,7 @@ export default class Picker extends Component {
     getPopupContainer: PropTypes.func,
     placeholder: PropTypes.string,
     format: PropTypes.string,
+    formatLocale: PropTypes.string,
     showHour: PropTypes.bool,
     showMinute: PropTypes.bool,
     showSecond: PropTypes.bool,
@@ -66,8 +67,8 @@ export default class Picker extends Component {
     className: '',
     popupClassName: '',
     align: {},
-    defaultValue: new Date,
-    defaultOpenValue: new Date,
+    defaultValue: new Date(),
+    defaultOpenValue: new Date(),
     allowEmpty: true,
     showHour: true,
     showMinute: true,
@@ -93,7 +94,12 @@ export default class Picker extends Component {
     this.saveInputRef = refFn.bind(this, 'picker');
     this.savePanelRef = refFn.bind(this, 'panelInstance');
 
-    const { defaultOpen, defaultValue, open = defaultOpen, value = defaultValue } = props;
+    const {
+      defaultOpen,
+      defaultValue,
+      open = defaultOpen,
+      value = defaultValue,
+    } = props;
     this.state = { open, value };
   }
 
@@ -109,27 +115,27 @@ export default class Picker extends Component {
 
   onPanelChange = (value) => {
     this.setValue(value);
-  }
+  };
 
   onPanelClear = () => {
     this.setValue(null);
     this.setOpen(false);
-  }
+  };
 
   onVisibleChange = (open) => {
     this.setOpen(open);
-  }
+  };
 
   onEsc = () => {
     this.setOpen(false);
     this.focus();
-  }
+  };
 
   onKeyDown = (e) => {
     if (e.keyCode === 40) {
       this.setOpen(true);
     }
-  }
+  };
 
   setValue(value) {
     if (!('value' in this.props)) {
@@ -145,11 +151,13 @@ export default class Picker extends Component {
     }
 
     if (use12Hours) {
-      const fmtString = ([
+      const fmtString = [
         showHour ? 'h' : '',
         showMinute ? 'mm' : '',
         showSecond ? 'ss' : '',
-      ].filter(item => !!item).join(':'));
+      ]
+        .filter((item) => !!item)
+        .join(':');
 
       return fmtString.concat(' a');
     }
@@ -158,15 +166,33 @@ export default class Picker extends Component {
       showHour ? 'HH' : '',
       showMinute ? 'mm' : '',
       showSecond ? 'ss' : '',
-    ].filter(item => !!item).join(':');
+    ]
+      .filter((item) => !!item)
+      .join(':');
   }
 
   getPanelElement() {
     const {
-      prefixCls, placeholder, disabledHours,
-      disabledMinutes, disabledSeconds, hideDisabledOptions,
-      allowEmpty, showHour, showMinute, showSecond, defaultOpenValue, clearText,
-      addon, use12Hours, focusOnOpen, onKeyDown, hourStep, minuteStep, secondStep,
+      prefixCls,
+      placeholder,
+      disabledHours,
+      disabledMinutes,
+      disabledSeconds,
+      hideDisabledOptions,
+      allowEmpty,
+      showHour,
+      showMinute,
+      showSecond,
+      defaultOpenValue,
+      clearText,
+      addon,
+      use12Hours,
+      focusOnOpen,
+      onKeyDown,
+      hourStep,
+      minuteStep,
+      secondStep,
+      formatLocale,
     } = this.props;
     return (
       <Panel
@@ -183,6 +209,7 @@ export default class Picker extends Component {
         onEsc={this.onEsc}
         allowEmpty={allowEmpty}
         format={this.getFormat()}
+        formatLocale={formatLocale}
         placeholder={placeholder}
         disabledHours={disabledHours}
         disabledMinutes={disabledMinutes}
@@ -200,7 +227,8 @@ export default class Picker extends Component {
   }
 
   getPopupClassName() {
-    const { showHour, showMinute, showSecond, use12Hours, prefixCls } = this.props;
+    const { showHour, showMinute, showSecond, use12Hours, prefixCls } =
+      this.props;
     let popupClassName = this.props.popupClassName;
     // Keep it for old compatibility
     if ((!showHour || !showMinute || !showSecond) && !use12Hours) {
@@ -247,9 +275,21 @@ export default class Picker extends Component {
 
   render() {
     const {
-      prefixCls, placeholder, placement, align,
-      disabled, transitionName, style, className, getPopupContainer, name, autoComplete,
-      onFocus, onBlur, autoFocus,
+      prefixCls,
+      placeholder,
+      placement,
+      align,
+      disabled,
+      transitionName,
+      style,
+      className,
+      getPopupContainer,
+      name,
+      autoComplete,
+      onFocus,
+      onBlur,
+      autoFocus,
+      formatLocale,
     } = this.props;
     const { open, value } = this.state;
     const popupClassName = this.getPopupClassName();
@@ -278,14 +318,16 @@ export default class Picker extends Component {
             name={name}
             onKeyDown={this.onKeyDown}
             disabled={disabled}
-            value={value && formatTime(value, this.getFormat()) || ''}
+            value={
+              (value && formatTime(value, this.getFormat(), formatLocale)) || ''
+            }
             autoComplete={autoComplete}
             onFocus={onFocus}
             onBlur={onBlur}
             autoFocus={autoFocus}
             onChange={noop}
           />
-          <span className={`${prefixCls}-icon`}/>
+          <span className={`${prefixCls}-icon`} />
         </span>
       </Trigger>
     );

@@ -21,9 +21,9 @@
   "module": "es/index",
   "homepage": "http://github.com/react-component/time-picker",
   "author": "frostiebot",
-  "repository": "git@github.com:frostiebot/time-picker.git",
+  "repository": "git@github.com:ktanoooo/time-picker.git",
   "bugs": {
-    "url": "http://github.com/frostiebot/time-picker/issues"
+    "url": "http://github.com/ktanoooo/time-picker/issues"
   },
   "licenses": "MIT",
   "config": {

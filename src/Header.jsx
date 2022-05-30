@@ -19,6 +19,7 @@ import {
 class Header extends Component {
   static propTypes = {
     format: PropTypes.string,
+    formatLocale: PropTypes.string,
     prefixCls: PropTypes.string,
     disabledDate: PropTypes.func,
     placeholder: PropTypes.string,
@@ -42,9 +43,9 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
-    const { value, format } = props;
+    const { value, format, formatLocale } = props;
     this.state = {
-      str: value && formatTime(value, format) || '',
+      str: (value && formatTime(value, format, formatLocale)) || '',
       invalid: false,
     };
   }
@@ -52,7 +53,8 @@ class Header extends Component {
   componentDidMount() {
     if (this.props.focusOnOpen) {
       // Wait one frame for the panel to be positioned before focusing
-      const requestAnimationFrame = (window.requestAnimationFrame || window.setTimeout);
+      const requestAnimationFrame =
+        window.requestAnimationFrame || window.setTimeout;
       requestAnimationFrame(() => {
         this.refs.input.focus();
         this.refs.input.select();
@@ -61,9 +63,9 @@ class Header extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { value, format } = nextProps;
+    const { value, format, formatLocale } = nextProps;
     this.setState({
-      str: value && formatTime(value, format) || '',
+      str: (value && formatTime(value, format, formatLocale)) || '',
       invalid: false,
     });
   }
@@ -74,15 +76,20 @@ class Header extends Component {
     this.setState({ str });
 
     const {
-      format, hourOptions, minuteOptions, secondOptions,
-      disabledHours, disabledMinutes,
-      disabledSeconds, onChange, allowEmpty,
+      format,
+      hourOptions,
+      minuteOptions,
+      secondOptions,
+      disabledHours,
+      disabledMinutes,
+      disabledSeconds,
+      onChange,
+      allowEmpty,
     } = this.props;
 
     if (str) {
       const originalValue = this.props.value;
       const parsed = parseTime(str, format);
-
 
       if (!isValidTime(parsed)) {
         this.setState({ invalid: true });
@@ -91,10 +98,7 @@ class Header extends Component {
 
       const value = setHours(
         setMinutes(
-          setSeconds(
-            this.getProtoValue(),
-            getSeconds(parsed)
-          ),
+          setSeconds(this.getProtoValue(), getSeconds(parsed)),
           getMinutes(parsed)
         ),
         getHours(parsed)
@@ -113,11 +117,17 @@ class Header extends Component {
       // if time value is disabled, response warning.
       const disabledHourOptions = disabledHours();
       const disabledMinuteOptions = disabledMinutes(getHours(value));
-      const disabledSecondOptions = disabledSeconds(getHours(value), getMinutes(value));
+      const disabledSecondOptions = disabledSeconds(
+        getHours(value),
+        getMinutes(value)
+      );
       if (
-        (disabledHourOptions && disabledHourOptions.indexOf(getHours(value)) >= 0) ||
-        (disabledMinuteOptions && disabledMinuteOptions.indexOf(getMinutes(value)) >= 0) ||
-        (disabledSecondOptions && disabledSecondOptions.indexOf(getSeconds(value)) >= 0)
+        (disabledHourOptions &&
+          disabledHourOptions.indexOf(getHours(value)) >= 0) ||
+        (disabledMinuteOptions &&
+          disabledMinuteOptions.indexOf(getMinutes(value)) >= 0) ||
+        (disabledSecondOptions &&
+          disabledSecondOptions.indexOf(getSeconds(value)) >= 0)
       ) {
         this.setState({ invalid: true });
         return;
@@ -132,10 +142,7 @@ class Header extends Component {
           // keep other fields for rc-calendar
           const changedValue = setHours(
             setMinutes(
-              setSeconds(
-                originalValue,
-                getSeconds(value)
-              ),
+              setSeconds(originalValue, getSeconds(value)),
               getMinutes(value)
             ),
             getHours(value)
@@ -153,7 +160,7 @@ class Header extends Component {
     }
 
     this.setState({ invalid: false });
-  }
+  };
 
   onKeyDown = (e) => {
     const { onEsc, onKeyDown } = this.props;
@@ -161,24 +168,26 @@ class Header extends Component {
       onEsc();
     }
     onKeyDown(e);
-  }
+  };
 
   onClear = () => {
     this.setState({ str: '' });
     this.props.onClear();
-  }
+  };
 
   getClearButton() {
     const { prefixCls, allowEmpty } = this.props;
     if (!allowEmpty) {
       return null;
     }
-    return (<a
-      className={`${prefixCls}-clear-btn`}
-      role="button"
-      title={this.props.clearText}
-      onMouseDown={this.onClear}
-    />);
+    return (
+      <a
+        className={`${prefixCls}-clear-btn`}
+        role="button"
+        title={this.props.clearText}
+        onMouseDown={this.onClear}
+      />
+    );
   }
 
   getProtoValue() {

@@ -25,7 +25,7 @@ export const parseTime = (value, format = null) => {
     return toDate(value);
   }
 
-  const parsed = parseDate(value, format, new Date);
+  const parsed = parseDate(value, format, new Date());
 
   if (!isValid(parsed) || !value.startsWith(formatDate(parsed, format))) {
     return new Date('');
@@ -34,9 +34,16 @@ export const parseTime = (value, format = null) => {
   return parsed;
 };
 
-export const formatTime = (value, format) => formatDate(parseTime(value, format), format);
+export const formatTime = (value, format, formatLocale = '') => {
+  let ret = formatDate(parseTime(value, format), format);
+  if (formatLocale === 'ja')
+    ret = ret.replace('AM', '午前').replace('PM', '午後');
+  console.log(ret);
+  console.log(formatLocale);
+  return ret;
+};
 
-export const isValidTime = value => isValid(value);
+export const isValidTime = (value) => isValid(value);
 
 export {
   getHours,
