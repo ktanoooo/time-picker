@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>12hours.js - example - rc-time-picker-date-fns@3.2.8</title>
+  <title>12hours.js - example - rc-time-picker-date-fns-format-ja@3.7.4</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,7 +263,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-time-picker-date-fns@3.2.8</h1>
+      <h1>rc-time-picker-date-fns-format-ja@3.7.4</h1>
 
       <p>React TimePicker using date-fns</p>
     </div>
@@ -271,16 +271,16 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 
     <div class="highlight"><pre><code language="js"><span class="hljs-comment">/* eslint no-console:0 */</span>
 
-<span class="hljs-keyword">import</span> <span class="hljs-string">'rc-time-picker-date-fns/assets/index.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'rc-time-picker-date-fns-format-ja/assets/index.css'</span>;
 
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDom <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 
-<span class="hljs-keyword">import</span> TimePicker, { formatTime } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker-date-fns'</span>;
+<span class="hljs-keyword">import</span> TimePicker, { formatTime } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker-date-fns-format-ja'</span>;
 
 <span class="hljs-keyword">const</span> format = <span class="hljs-string">'h:mm a'</span>;
 
-<span class="hljs-keyword">const</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>;
+<span class="hljs-keyword">const</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onChange</span>(<span class="hljs-params">value</span>) </span>{
   <span class="hljs-built_in">console</span>.log(value &amp;&amp; formatTime(value, format));
@@ -294,6 +294,7 @@ ReactDom.render(
     <span class="hljs-attribute">onChange</span>=<span class="hljs-value">{onChange}</span>
     <span class="hljs-attribute">format</span>=<span class="hljs-value">{format}</span>
     <span class="hljs-attribute">use12Hours</span>
+    <span class="hljs-attribute">inputReadOnly</span>
   /&gt;</span>,
   document.getElementById('__react-content')
 );

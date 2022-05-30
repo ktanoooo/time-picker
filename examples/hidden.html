@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>hidden.js - example - rc-time-picker-date-fns@3.2.8</title>
+  <title>hidden.js - example - rc-time-picker-date-fns-format-ja@3.7.4</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,7 +263,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-time-picker-date-fns@3.2.8</h1>
+      <h1>rc-time-picker-date-fns-format-ja@3.7.4</h1>
 
       <p>React TimePicker using date-fns</p>
     </div>
@@ -271,12 +271,12 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 
     <div class="highlight"><pre><code language="js"><span class="hljs-comment">/* eslint no-console:0 */</span>
 
-<span class="hljs-keyword">import</span> <span class="hljs-string">'rc-time-picker-date-fns/assets/index.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'rc-time-picker-date-fns-format-ja/assets/index.css'</span>;
 
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDom <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 
-<span class="hljs-keyword">import</span> TimePicker, { formatTime } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker-date-fns'</span>;
+<span class="hljs-keyword">import</span> TimePicker, { formatTime } <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-time-picker-date-fns-format-ja'</span>;
 
 <span class="hljs-keyword">const</span> showSecond = <span class="hljs-literal">true</span>;
 <span class="hljs-keyword">const</span> str = showSecond ? <span class="hljs-string">'HH:mm:ss'</span> : <span class="hljs-string">'HH:mm'</span>;
@@ -290,7 +290,7 @@ ReactDom.render(
     <span class="hljs-attribute">format</span>=<span class="hljs-value">{str}</span>
     <span class="hljs-attribute">showSecond</span>=<span class="hljs-value">{showSecond}</span>
     // <span class="hljs-attribute">use</span> <span class="hljs-attribute">to</span> <span class="hljs-attribute">control</span> <span class="hljs-attribute">utfOffset</span>, <span class="hljs-attribute">locale</span>, <span class="hljs-attribute">default</span> <span class="hljs-attribute">open</span> <span class="hljs-attribute">value</span>
-    <span class="hljs-attribute">defaultOpenValue</span>=<span class="hljs-value">{new</span> <span class="hljs-attribute">Date</span>}
+    <span class="hljs-attribute">defaultOpenValue</span>=<span class="hljs-value">{new</span> <span class="hljs-attribute">Date</span>()}
     <span class="hljs-attribute">className</span>=<span class="hljs-value">"xxx"</span>
     <span class="hljs-attribute">onChange</span>=<span class="hljs-value">{onChange}</span>
     <span class="hljs-attribute">disabledHours</span>=<span class="hljs-value">{()</span> =&gt;</span> [0, 1, 2, 3, 4, 5, 6, 7, 8, 22, 23]}
