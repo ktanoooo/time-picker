@@ -15,8 +15,6 @@ React TimePicker
 
 example
 --------
-
-```
 Usage
 -----
 
@@ -91,4 +89,4 @@ open coverage/ dir
 License
 -------
 
-rc-time-picker-date-fns-format-ja-ja is released under the MIT license.
+rc-time-picker-date-fns-format-ja is released under the MIT license.

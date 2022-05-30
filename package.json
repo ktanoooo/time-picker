@@ -17,10 +17,13 @@
     "es",
     "assets/*.css"
   ],
+  "engines": {
+    "node": "6.x"
+  },
   "main": "lib/index",
   "module": "es/index",
   "homepage": "http://github.com/react-component/time-picker",
-  "author": "frostiebot",
+  "author": "ktanoooo",
   "repository": "git@github.com:ktanoooo/time-picker.git",
   "bugs": {
     "url": "http://github.com/ktanoooo/time-picker/issues"
