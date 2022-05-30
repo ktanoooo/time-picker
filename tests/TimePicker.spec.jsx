@@ -98,7 +98,7 @@ describe('TimePicker', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       expect(input.value).to.be('12:57:58');
       async.series(
@@ -111,7 +111,7 @@ describe('TimePicker', () => {
             expect(
               TestUtils.scryRenderedDOMComponentsWithClass(
                 picker.panelInstance,
-                'rc-time-picker-panel-inner'
+                'rc-time-picker-date-fns-format-ja-panel-inner'
               )[0]
             ).to.be.ok();
             expect(picker.state.open).to.be(true);
@@ -143,7 +143,7 @@ describe('TimePicker', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       async.series(
         [
@@ -155,13 +155,14 @@ describe('TimePicker', () => {
             expect(
               TestUtils.scryRenderedDOMComponentsWithClass(
                 picker,
-                'rc-time-picker-panel-inner'
+                'rc-time-picker-date-fns-format-ja-panel-inner'
               )[0]
             ).to.be.ok();
             expect(picker.state.open).to.be(true);
             if (document.querySelectorAll) {
               expect(
-                document.querySelectorAll('.rc-time-picker').length
+                document.querySelectorAll('.rc-time-picker-date-fns-format-ja')
+                  .length
               ).not.to.be(0);
             }
             expect(
@@ -175,9 +176,10 @@ describe('TimePicker', () => {
           },
           (next) => {
             if (document.querySelectorAll) {
-              expect(document.querySelectorAll('.rc-time-picker').length).to.be(
-                0
-              );
+              expect(
+                document.querySelectorAll('.rc-time-picker-date-fns-format-ja')
+                  .length
+              ).to.be(0);
             }
             expect(picker.panelInstance).not.to.be.ok();
             next();
@@ -195,7 +197,7 @@ describe('TimePicker', () => {
       });
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       expect(input.name).to.be('time-picker-form-name');
     });
@@ -214,7 +216,7 @@ describe('TimePicker', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       Simulate.click(input);
       expect(picker.state.open).not.to.be.ok();
@@ -225,7 +227,7 @@ describe('TimePicker', () => {
       });
       const innerPicker = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker'
+        'rc-time-picker-date-fns-format-ja'
       )[0];
       expect(innerPicker.innerText).to.be('test-select');
     });
@@ -242,7 +244,7 @@ describe('TimePicker', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       expect(input.value).to.be('24:03');
       async.series(
@@ -255,7 +257,7 @@ describe('TimePicker', () => {
             expect(
               TestUtils.scryRenderedDOMComponentsWithClass(
                 picker.panelInstance,
-                'rc-time-picker-panel-inner'
+                'rc-time-picker-date-fns-format-ja-panel-inner'
               )[0]
             ).to.be.ok();
             expect(picker.state.open).to.be(true);
@@ -293,7 +295,7 @@ describe('TimePicker', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       expect(input.value).to.be('01:24');
       async.series(
@@ -306,7 +308,7 @@ describe('TimePicker', () => {
             expect(
               TestUtils.scryRenderedDOMComponentsWithClass(
                 picker.panelInstance,
-                'rc-time-picker-panel-inner'
+                'rc-time-picker-date-fns-format-ja-panel-inner'
               )[0]
             ).to.be.ok();
             expect(picker.state.open).to.be(true);
@@ -344,7 +346,7 @@ describe('TimePicker', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       expect(input.value).to.be('01');
       async.series(
@@ -357,7 +359,7 @@ describe('TimePicker', () => {
             expect(
               TestUtils.scryRenderedDOMComponentsWithClass(
                 picker.panelInstance,
-                'rc-time-picker-panel-inner'
+                'rc-time-picker-date-fns-format-ja-panel-inner'
               )[0]
             ).to.be.ok();
             expect(picker.state.open).to.be(true);
@@ -396,7 +398,7 @@ describe('TimePicker', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       expect(input.value).to.be('');
       async.series(
@@ -409,7 +411,7 @@ describe('TimePicker', () => {
             expect(
               TestUtils.scryRenderedDOMComponentsWithClass(
                 picker.panelInstance,
-                'rc-time-picker-panel-inner'
+                'rc-time-picker-date-fns-format-ja-panel-inner'
               )[0]
             ).to.be.ok();
             expect(picker.state.open).to.be(true);
@@ -449,7 +451,7 @@ describe('TimePicker', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
 
       async.series(

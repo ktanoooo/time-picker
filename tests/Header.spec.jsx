@@ -48,7 +48,7 @@ describe('Header', () => {
 
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
 
       let header;
@@ -64,7 +64,7 @@ describe('Header', () => {
 
             header = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-input'
+              'rc-time-picker-date-fns-format-ja-panel-input'
             )[0];
 
             expect(header).to.be.ok();
@@ -94,7 +94,7 @@ describe('Header', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       let header;
       async.series(
@@ -107,7 +107,7 @@ describe('Header', () => {
             expect(picker.state.open).to.be(true);
             header = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-input'
+              'rc-time-picker-date-fns-format-ja-panel-input'
             )[0];
             expect(header).to.be.ok();
             expect(header.value).to.be('01:02:03');
@@ -161,7 +161,7 @@ describe('Header', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       let header;
       async.series(
@@ -174,7 +174,7 @@ describe('Header', () => {
             expect(picker.state.open).to.be(true);
             header = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-input'
+              'rc-time-picker-date-fns-format-ja-panel-input'
             )[0];
             expect(header).to.be.ok();
             expect(header.value).to.be('01:02:03');
@@ -187,7 +187,7 @@ describe('Header', () => {
           (next) => {
             expect(picker.state.open).to.be(true);
             expect(header.className).to.contain(
-              'rc-time-picker-panel-input-invalid'
+              'rc-time-picker-date-fns-format-ja-panel-input-invalid'
             );
             expect(header.value).to.be('10:09:78');
             expect(input.value).to.be('01:02:03');
@@ -208,7 +208,7 @@ describe('Header', () => {
           (next) => {
             expect(picker.state.open).to.be(true);
             expect(header.className).to.contain(
-              'rc-time-picker-panel-input-invalid'
+              'rc-time-picker-date-fns-format-ja-panel-input-invalid'
             );
             expect(header.value).to.be('10:09:19');
             expect(input.value).to.be('01:02:03');
@@ -244,7 +244,7 @@ describe('Header', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       let header;
       async.series(
@@ -257,7 +257,7 @@ describe('Header', () => {
             expect(picker.state.open).to.be(true);
             header = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-input'
+              'rc-time-picker-date-fns-format-ja-panel-input'
             )[0];
             expect(header).to.be.ok();
             expect(header.value).to.be('01:02:03');
@@ -270,7 +270,7 @@ describe('Header', () => {
           (next) => {
             expect(picker.state.open).to.be(true);
             expect(header.className).to.contain(
-              'rc-time-picker-panel-input-invalid'
+              'rc-time-picker-date-fns-format-ja-panel-input-invalid'
             );
             expect(header.value).to.be('10:09:78');
             expect(input.value).to.be('01:02:03');
@@ -291,7 +291,7 @@ describe('Header', () => {
           (next) => {
             expect(picker.state.open).to.be(true);
             expect(header.className).to.contain(
-              'rc-time-picker-panel-input-invalid'
+              'rc-time-picker-date-fns-format-ja-panel-input-invalid'
             );
             expect(header.value).to.be('10:09:19');
             expect(input.value).to.be('01:02:03');
@@ -319,7 +319,7 @@ describe('Header', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       let header;
       async.series(
@@ -332,7 +332,7 @@ describe('Header', () => {
             expect(picker.state.open).to.be(true);
             header = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-input'
+              'rc-time-picker-date-fns-format-ja-panel-input'
             )[0];
             expect(header).to.be.ok();
             expect(header.value).to.be('01:02:03');
@@ -347,7 +347,7 @@ describe('Header', () => {
             expect(header.value).to.be('3:34:56');
             expect(input.value).to.be('01:02:03');
             expect(header.className).to.contain(
-              'rc-time-picker-panel-input-invalid'
+              'rc-time-picker-date-fns-format-ja-panel-input-invalid'
             );
 
             header.value = '13:3:56';
@@ -359,7 +359,7 @@ describe('Header', () => {
             expect(header.value).to.be('13:3:56');
             expect(input.value).to.be('01:02:03');
             expect(header.className).to.contain(
-              'rc-time-picker-panel-input-invalid'
+              'rc-time-picker-date-fns-format-ja-panel-input-invalid'
             );
 
             header.value = '13:34:5';
@@ -371,7 +371,7 @@ describe('Header', () => {
             expect(header.value).to.be('13:34:5');
             expect(input.value).to.be('01:02:03');
             expect(header.className).to.contain(
-              'rc-time-picker-panel-input-invalid'
+              'rc-time-picker-date-fns-format-ja-panel-input-invalid'
             );
             next();
           },
@@ -395,7 +395,7 @@ describe('Header', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       let header;
       async.series(
@@ -410,11 +410,11 @@ describe('Header', () => {
             expect(picker.state.open).to.be(true);
             header = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-input'
+              'rc-time-picker-date-fns-format-ja-panel-input'
             )[0];
             const clearButton = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-clear-btn'
+              'rc-time-picker-date-fns-format-ja-panel-clear-btn'
             )[0];
             expect(header).to.be.ok();
             expect(clearButton).to.be.ok();
@@ -445,7 +445,7 @@ describe('Header', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       let header;
       async.series(
@@ -460,7 +460,7 @@ describe('Header', () => {
             expect(picker.state.open).to.be(true);
             header = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-input'
+              'rc-time-picker-date-fns-format-ja-panel-input'
             )[0];
             expect(header).to.be.ok();
             expect(header.value).to.be('01:02:03');
@@ -492,7 +492,7 @@ describe('Header', () => {
       expect(picker.state.open).not.to.be.ok();
       const input = TestUtils.scryRenderedDOMComponentsWithClass(
         picker,
-        'rc-time-picker-input'
+        'rc-time-picker-date-fns-format-ja-input'
       )[0];
       let header;
       async.series(
@@ -508,7 +508,7 @@ describe('Header', () => {
             expect(picker.state.open).to.be(true);
             header = TestUtils.scryRenderedDOMComponentsWithClass(
               picker.panelInstance,
-              'rc-time-picker-panel-input'
+              'rc-time-picker-date-fns-format-ja-panel-input'
             )[0];
             expect(header).to.be.ok();
             expect(header.value).to.be('01:02:03');

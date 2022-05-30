@@ -12,6 +12,9 @@ import {
   getSeconds,
   setSeconds,
   isSameSecond,
+  getYear,
+  getMonth,
+  getDate,
 } from 'date-fns/esm';
 
 export const parseTime = (value, format = null) => {
@@ -38,14 +41,14 @@ export const formatTime = (value, format, formatLocale = '') => {
   let ret = formatDate(parseTime(value, format), format);
   if (formatLocale === 'ja')
     ret = ret.replace('AM', '午前').replace('PM', '午後');
-  console.log(ret);
-  console.log(formatLocale);
   return ret;
 };
 
 export const isValidTime = (value) => isValid(value);
 
 export {
+  parseDate,
+  formatDate,
   getHours,
   setHours,
   isSameHour,
@@ -55,4 +58,7 @@ export {
   getSeconds,
   setSeconds,
   isSameSecond,
+  getYear,
+  getMonth,
+  getDate,
 };

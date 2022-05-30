@@ -11,27 +11,27 @@ class App extends React.Component {
   state = {
     value: new Date(),
   };
+
   handleValueChange = (value) => {
     console.log(value && formatTime(value, 'HH:mm:ss'));
     this.setState({ value });
   };
+
   clear = () => {
     this.setState({
       value: undefined,
     });
   };
+
   render() {
+    const { value } = this.state;
     return (
       <div>
-        <TimePicker
-          defaultValue={this.state.value}
-          onChange={this.handleValueChange}
-        />
-        <TimePicker
-          value={this.state.value}
-          onChange={this.handleValueChange}
-        />
-        <button onClick={this.clear}>clear</button>
+        <TimePicker defaultValue={value} onChange={this.handleValueChange} />
+        <TimePicker value={value} onChange={this.handleValueChange} />
+        <button onClick={this.clear} type="button">
+          clear
+        </button>
       </div>
     );
   }

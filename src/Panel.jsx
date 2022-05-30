@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-
-import { parseTime, getHours, getMinutes } from './date-utils';
-
+import { polyfill } from 'react-lifecycles-compat';
 import Header from './Header';
 import Combobox from './Combobox';
+import {
+  getHours,
+  getMinutes,
+  getSeconds,
+  getYear,
+  getMonth,
+  getDate,
+} from './date-utils';
 
 function noop() {}
 
@@ -29,6 +35,31 @@ function generateOptions(
   return arr;
 }
 
+function toNearestValidTime(time, hourOptions, minuteOptions, secondOptions) {
+  const hour = hourOptions
+    .slice()
+    .sort(
+      (a, b) => Math.abs(getHours(time) - a) - Math.abs(getHours(time) - b)
+    )[0];
+  const minute = minuteOptions
+    .slice()
+    .sort(
+      (a, b) => Math.abs(getMinutes(time) - a) - Math.abs(getMinutes(time) - b)
+    )[0];
+  const second = secondOptions
+    .slice()
+    .sort(
+      (a, b) => Math.abs(getSeconds(time) - a) - Math.abs(getSeconds(time) - b)
+    )[0];
+  return new Date(
+    getYear(time),
+    getMonth(time),
+    getDate(time),
+    hour,
+    minute,
+    second
+  );
+}
 class Panel extends Component {
   static propTypes = {
     clearText: PropTypes.string,
@@ -39,17 +70,17 @@ class Panel extends Component {
     placeholder: PropTypes.string,
     format: PropTypes.string,
     formatLocale: PropTypes.string,
+    inputReadOnly: PropTypes.bool,
     disabledHours: PropTypes.func,
     disabledMinutes: PropTypes.func,
     disabledSeconds: PropTypes.func,
     hideDisabledOptions: PropTypes.bool,
     onChange: PropTypes.func,
+    onAmPmChange: PropTypes.func,
     onEsc: PropTypes.func,
-    allowEmpty: PropTypes.bool,
     showHour: PropTypes.bool,
     showMinute: PropTypes.bool,
     showSecond: PropTypes.bool,
-    onClear: PropTypes.func,
     use12Hours: PropTypes.bool,
     hourStep: PropTypes.number,
     minuteStep: PropTypes.number,
@@ -61,7 +92,7 @@ class Panel extends Component {
   };
 
   static defaultProps = {
-    prefixCls: 'rc-time-picker-panel',
+    prefixCls: 'rc-time-picker-date-fns-format-ja-panel',
     onChange: noop,
     onClear: noop,
     disabledHours: noop,
@@ -71,35 +102,63 @@ class Panel extends Component {
     use12Hours: false,
     addon: noop,
     onKeyDown: noop,
+    onAmPmChange: noop,
+    inputReadOnly: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: parseTime(props.value),
-      selectionRange: [],
-    };
-  }
+  state = {};
 
-  componentWillReceiveProps(nextProps) {
-    const value = nextProps.value;
-    if (value) {
-      this.setState({ value });
+  static getDerivedStateFromProps(props, state) {
+    if ('value' in props) {
+      return {
+        ...state,
+        value: props.value,
+      };
     }
+    return null;
   }
 
   onChange = (newValue) => {
+    const { onChange } = this.props;
     this.setState({ value: newValue });
-    this.props.onChange(newValue);
+    onChange(newValue);
+  };
+
+  onAmPmChange = (ampm) => {
+    const { onAmPmChange } = this.props;
+    onAmPmChange(ampm);
   };
 
   onCurrentSelectPanelChange = (currentSelectPanel) => {
     this.setState({ currentSelectPanel });
   };
 
+  disabledHours = () => {
+    const { use12Hours, disabledHours } = this.props;
+    let disabledOptions = disabledHours();
+    if (use12Hours && Array.isArray(disabledOptions)) {
+      if (this.isAM()) {
+        disabledOptions = disabledOptions
+          .filter((h) => h < 12)
+          .map((h) => (h === 0 ? 12 : h));
+      } else {
+        disabledOptions = disabledOptions.map((h) => (h === 12 ? 12 : h - 12));
+      }
+    }
+    return disabledOptions;
+  };
+
   // https://github.com/ant-design/ant-design/issues/5829
   close() {
-    this.props.onEsc();
+    const { onEsc } = this.props;
+    onEsc();
+  }
+
+  isAM() {
+    const { defaultOpenValue } = this.props;
+    const { value } = this.state;
+    const realValue = value || defaultOpenValue;
+    return getHours(realValue) >= 0 && getHours(realValue) < 12;
   }
 
   render() {
@@ -107,11 +166,9 @@ class Panel extends Component {
       prefixCls,
       className,
       placeholder,
-      disabledHours,
       disabledMinutes,
       disabledSeconds,
       hideDisabledOptions,
-      allowEmpty,
       showHour,
       showMinute,
       showSecond,
@@ -122,18 +179,17 @@ class Panel extends Component {
       onEsc,
       addon,
       use12Hours,
-      onClear,
       focusOnOpen,
       onKeyDown,
       hourStep,
       minuteStep,
       secondStep,
+      inputReadOnly,
       clearIcon,
     } = this.props;
 
     const { value, currentSelectPanel } = this.state;
-
-    const disabledHourOptions = disabledHours();
+    const disabledHourOptions = this.disabledHours();
     const disabledMinuteOptions = disabledMinutes(
       value ? getHours(value) : null
     );
@@ -161,17 +217,19 @@ class Panel extends Component {
       secondStep
     );
 
+    const validDefaultOpenValue = toNearestValidTime(
+      defaultOpenValue,
+      hourOptions,
+      minuteOptions,
+      secondOptions
+    );
+
     return (
-      <div
-        className={classNames({
-          [`${prefixCls}-inner`]: true,
-          [className]: !!className,
-        })}
-      >
+      <div className={classNames(className, `${prefixCls}-inner`)}>
         <Header
           clearText={clearText}
           prefixCls={prefixCls}
-          defaultOpenValue={defaultOpenValue}
+          defaultOpenValue={validDefaultOpenValue}
           value={value}
           currentSelectPanel={currentSelectPanel}
           onEsc={onEsc}
@@ -181,38 +239,40 @@ class Panel extends Component {
           hourOptions={hourOptions}
           minuteOptions={minuteOptions}
           secondOptions={secondOptions}
-          disabledHours={disabledHours}
+          disabledHours={this.disabledHours}
           disabledMinutes={disabledMinutes}
           disabledSeconds={disabledSeconds}
           onChange={this.onChange}
-          onClear={onClear}
-          allowEmpty={allowEmpty}
           focusOnOpen={focusOnOpen}
           onKeyDown={onKeyDown}
+          inputReadOnly={inputReadOnly}
           clearIcon={clearIcon}
         />
         <Combobox
           prefixCls={prefixCls}
           value={value}
-          defaultOpenValue={defaultOpenValue}
+          defaultOpenValue={validDefaultOpenValue}
           format={format}
           onChange={this.onChange}
+          onAmPmChange={this.onAmPmChange}
           showHour={showHour}
           showMinute={showMinute}
           showSecond={showSecond}
           hourOptions={hourOptions}
           minuteOptions={minuteOptions}
           secondOptions={secondOptions}
-          disabledHours={disabledHours}
+          disabledHours={this.disabledHours}
           disabledMinutes={disabledMinutes}
           disabledSeconds={disabledSeconds}
           onCurrentSelectPanelChange={this.onCurrentSelectPanelChange}
           use12Hours={use12Hours}
+          onEsc={onEsc}
+          isAM={this.isAM()}
         />
         {addon(this)}
       </div>
     );
   }
 }
-
+polyfill(Panel);
 export default Panel;

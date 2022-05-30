@@ -4,6 +4,7 @@ import 'rc-time-picker-date-fns-format-ja/assets/index.less';
 import React from 'react';
 import ReactDom from 'react-dom';
 import TimePicker from 'rc-time-picker-date-fns-format-ja';
+import dateFns from 'date-fns';
 
 const starPath =
   'M908.1 353.1l-253.9-36.9L540.7 86.1c-3' +
@@ -38,6 +39,7 @@ class App extends React.Component {
     open: false,
     useIcon: false,
   };
+
   getIcon = (path, style = {}) => {
     return (
       <i
@@ -59,44 +61,52 @@ class App extends React.Component {
           fill="currentColor"
           style={{ verticalAlign: '-.125em' }}
         >
-          <path d={path} p-id="5827"></path>
+          <path d={path} p-id="5827" />
         </svg>
       </i>
     );
   };
+
   setOpen = ({ open }) => {
     this.setState({ open });
   };
+
   toggleOpen = () => {
+    const { open } = this.state;
     this.setState({
-      open: !this.state.open,
+      open: !open,
     });
   };
+
   toggleIcon = () => {
+    const { useIcon } = this.state;
     this.setState({
-      useIcon: !this.state.useIcon,
+      useIcon: !useIcon,
     });
   };
+
   render() {
-    const inputIcon = this.getIcon(starPath, {
-      position: 'absolute',
-      width: '24px',
-      right: 0,
-      top: 0,
-      bottom: 0,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    });
+    const inputIcon = this.getIcon(starPath, iconStyle);
+    const { useIcon, open } = this.state;
+    const clearIcon = this.getIcon(redoPath, { ...iconStyle, right: 20 });
     return (
       <div>
-        <button onClick={this.toggleOpen}>Toggle open</button>
+        <button onClick={this.toggleOpen} type="button">
+          Toggle open
+        </button>
+        <button onClick={this.toggleIcon} type="button">
+          Use Custom Icon
+        </button>
         <TimePicker
-          open={this.state.open}
+          style={{
+            position: 'relative',
+          }}
+          defaultValue={dateFns('01:02:04', 'HH:mm:ss')}
+          open={open}
           onOpen={this.setOpen}
           onClose={this.setOpen}
-          inputIcon={(this.state.useIcon && inputIcon) || undefined}
-          clearIcon={(this.state.useIcon && clearIcon) || undefined}
+          inputIcon={(useIcon && inputIcon) || undefined}
+          clearIcon={(useIcon && clearIcon) || undefined}
           focusOnOpen
         />
       </div>

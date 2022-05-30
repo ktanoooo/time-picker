@@ -1,21 +1,39 @@
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import { getHours, setHours, getMinutes, setMinutes, getSeconds, setSeconds } from './date-utils';
-
+import { parseDate, getHours, setHours, getMinutes, setMinutes, getSeconds, setSeconds } from './date-utils';
 import Select from './Select';
 
 var formatOption = function formatOption(option, disabledOptions) {
-  var value = '' + option;
+  var value = "".concat(option);
+
   if (option < 10) {
-    value = '0' + option;
+    value = "0".concat(option);
   }
 
   var disabled = false;
+
   if (disabledOptions && disabledOptions.indexOf(option) >= 0) {
     disabled = true;
   }
@@ -26,31 +44,35 @@ var formatOption = function formatOption(option, disabledOptions) {
   };
 };
 
-var Combobox = function (_Component) {
+var Combobox = /*#__PURE__*/function (_Component) {
   _inherits(Combobox, _Component);
 
-  function Combobox() {
-    var _ref;
+  var _super = _createSuper(Combobox);
 
-    var _temp, _this, _ret;
+  function Combobox() {
+    var _this;
 
     _classCallCheck(this, Combobox);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Combobox.__proto__ || Object.getPrototypeOf(Combobox)).call.apply(_ref, [this].concat(args))), _this), _this.onItemChange = function (type, itemValue) {
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "onItemChange", function (type, itemValue) {
       var _this$props = _this.props,
           onChange = _this$props.onChange,
           defaultOpenValue = _this$props.defaultOpenValue,
-          use12Hours = _this$props.use12Hours;
-
-      var value = _this.props.value || defaultOpenValue;
+          use12Hours = _this$props.use12Hours,
+          propValue = _this$props.value,
+          isAM = _this$props.isAM,
+          onAmPmChange = _this$props.onAmPmChange;
+      var value = propValue || defaultOpenValue;
 
       if (type === 'hour') {
         if (use12Hours) {
-          if (_this.isAM()) {
+          if (isAM) {
             value = setHours(value, +itemValue % 12);
           } else {
             value = setHours(value, +itemValue % 12 + 12);
@@ -62,6 +84,7 @@ var Combobox = function (_Component) {
         value = setMinutes(value, +itemValue);
       } else if (type === 'ampm') {
         var ampm = itemValue.toUpperCase();
+
         if (use12Hours) {
           if (ampm === 'PM' && getHours(value) < 12) {
             value = setHours(value, getHours(value) % 12 + 12);
@@ -73,31 +96,44 @@ var Combobox = function (_Component) {
             }
           }
         }
+
+        onAmPmChange(ampm);
       } else {
         value = setSeconds(value, +itemValue);
       }
+
       onChange(value);
-    }, _this.onEnterSelectPanel = function (range) {
-      _this.props.onCurrentSelectPanelChange(range);
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onEnterSelectPanel", function (range) {
+      var onCurrentSelectPanelChange = _this.props.onCurrentSelectPanelChange;
+      onCurrentSelectPanelChange(range);
+    });
+
+    return _this;
   }
 
   _createClass(Combobox, [{
-    key: 'getHourSelect',
+    key: "getHourSelect",
     value: function getHourSelect(hour) {
-      var _props = this.props,
-          prefixCls = _props.prefixCls,
-          hourOptions = _props.hourOptions,
-          disabledHours = _props.disabledHours,
-          showHour = _props.showHour,
-          use12Hours = _props.use12Hours;
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          prefixCls = _this$props2.prefixCls,
+          hourOptions = _this$props2.hourOptions,
+          disabledHours = _this$props2.disabledHours,
+          showHour = _this$props2.showHour,
+          use12Hours = _this$props2.use12Hours,
+          onEsc = _this$props2.onEsc;
 
       if (!showHour) {
         return null;
       }
+
       var disabledOptions = disabledHours();
-      var hourOptionsAdj = void 0;
-      var hourAdj = void 0;
+      var hourOptionsAdj;
+      var hourAdj;
+
       if (use12Hours) {
         hourOptionsAdj = [12].concat(hourOptions.filter(function (h) {
           return h < 12 && h > 0;
@@ -108,78 +144,95 @@ var Combobox = function (_Component) {
         hourAdj = hour;
       }
 
-      return React.createElement(Select, {
+      return /*#__PURE__*/React.createElement(Select, {
         prefixCls: prefixCls,
         options: hourOptionsAdj.map(function (option) {
           return formatOption(option, disabledOptions);
         }),
         selectedIndex: hourOptionsAdj.indexOf(hourAdj),
-        type: 'hour',
+        type: "hour",
         onSelect: this.onItemChange,
-        onMouseEnter: this.onEnterSelectPanel.bind(this, 'hour')
+        onMouseEnter: function onMouseEnter() {
+          return _this2.onEnterSelectPanel('hour');
+        },
+        onEsc: onEsc
       });
     }
   }, {
-    key: 'getMinuteSelect',
+    key: "getMinuteSelect",
     value: function getMinuteSelect(minute) {
-      var _props2 = this.props,
-          prefixCls = _props2.prefixCls,
-          minuteOptions = _props2.minuteOptions,
-          disabledMinutes = _props2.disabledMinutes,
-          defaultOpenValue = _props2.defaultOpenValue,
-          showMinute = _props2.showMinute;
+      var _this3 = this;
+
+      var _this$props3 = this.props,
+          prefixCls = _this$props3.prefixCls,
+          minuteOptions = _this$props3.minuteOptions,
+          disabledMinutes = _this$props3.disabledMinutes,
+          defaultOpenValue = _this$props3.defaultOpenValue,
+          showMinute = _this$props3.showMinute,
+          propValue = _this$props3.value,
+          onEsc = _this$props3.onEsc;
 
       if (!showMinute) {
         return null;
       }
-      var value = this.props.value || defaultOpenValue;
-      var disabledOptions = disabledMinutes(getHours(value));
 
-      return React.createElement(Select, {
+      var value = propValue || defaultOpenValue;
+      var disabledOptions = disabledMinutes(getHours(value));
+      return /*#__PURE__*/React.createElement(Select, {
         prefixCls: prefixCls,
         options: minuteOptions.map(function (option) {
           return formatOption(option, disabledOptions);
         }),
         selectedIndex: minuteOptions.indexOf(minute),
-        type: 'minute',
+        type: "minute",
         onSelect: this.onItemChange,
-        onMouseEnter: this.onEnterSelectPanel.bind(this, 'minute')
+        onMouseEnter: function onMouseEnter() {
+          return _this3.onEnterSelectPanel('minute');
+        },
+        onEsc: onEsc
       });
     }
   }, {
-    key: 'getSecondSelect',
+    key: "getSecondSelect",
     value: function getSecondSelect(second) {
-      var _props3 = this.props,
-          prefixCls = _props3.prefixCls,
-          secondOptions = _props3.secondOptions,
-          disabledSeconds = _props3.disabledSeconds,
-          showSecond = _props3.showSecond,
-          defaultOpenValue = _props3.defaultOpenValue;
+      var _this$props4 = this.props,
+          prefixCls = _this$props4.prefixCls,
+          secondOptions = _this$props4.secondOptions,
+          disabledSeconds = _this$props4.disabledSeconds,
+          showSecond = _this$props4.showSecond,
+          defaultOpenValue = _this$props4.defaultOpenValue,
+          propValue = _this$props4.value,
+          onEsc = _this$props4.onEsc;
 
       if (!showSecond) {
         return null;
       }
-      var value = this.props.value || defaultOpenValue;
-      var disabledOptions = disabledSeconds(getHours(value), getMinutes(value));
 
-      return React.createElement(Select, {
+      var value = propValue || defaultOpenValue;
+      var disabledOptions = disabledSeconds(getHours(value), getMinutes(value));
+      return /*#__PURE__*/React.createElement(Select, {
         prefixCls: prefixCls,
         options: secondOptions.map(function (option) {
           return formatOption(option, disabledOptions);
         }),
         selectedIndex: secondOptions.indexOf(second),
-        type: 'second',
+        type: "second",
         onSelect: this.onItemChange,
-        onMouseEnter: this.onEnterSelectPanel.bind(this, 'second')
+        onMouseEnter: this.onEnterSelectPanel.bind(this, 'second'),
+        onEsc: onEsc
       });
     }
   }, {
-    key: 'getAMPMSelect',
+    key: "getAMPMSelect",
     value: function getAMPMSelect() {
-      var _props4 = this.props,
-          prefixCls = _props4.prefixCls,
-          use12Hours = _props4.use12Hours,
-          format = _props4.format;
+      var _this4 = this;
+
+      var _this$props5 = this.props,
+          prefixCls = _this$props5.prefixCls,
+          use12Hours = _this$props5.use12Hours,
+          format = _this$props5.format,
+          isAM = _this$props5.isAM,
+          onEsc = _this$props5.onEsc;
 
       if (!use12Hours) {
         return null;
@@ -189,54 +242,53 @@ var Combobox = function (_Component) {
       .map(function (c) {
         return format.match(/\sA/) ? c.toUpperCase() : c;
       }).map(function (c) {
-        return { value: c };
+        return {
+          value: c
+        };
       });
-
-      var selected = this.isAM() ? 0 : 1;
-
-      return React.createElement(Select, {
+      var selected = isAM ? 0 : 1;
+      return /*#__PURE__*/React.createElement(Select, {
         prefixCls: prefixCls,
         options: AMPMOptions,
         selectedIndex: selected,
-        type: 'ampm',
+        type: "ampm",
         onSelect: this.onItemChange,
-        onMouseEnter: this.onEnterSelectPanel.bind(this, 'ampm')
+        onMouseEnter: function onMouseEnter() {
+          return _this4.onEnterSelectPanel('ampm');
+        },
+        onEsc: onEsc
       });
     }
   }, {
-    key: 'isAM',
+    key: "isAM",
     value: function isAM() {
       var value = this.props.value || this.props.defaultOpenValue;
       return getHours(value) >= 0 && getHours(value) < 12;
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
-      var _props5 = this.props,
-          prefixCls = _props5.prefixCls,
-          defaultOpenValue = _props5.defaultOpenValue;
-
-      var value = this.props.value || defaultOpenValue;
-      return React.createElement(
-        'div',
-        { className: prefixCls + '-combobox' },
-        this.getHourSelect(getHours(value)),
-        this.getMinuteSelect(getMinutes(value)),
-        this.getSecondSelect(getSeconds(value)),
-        this.getAMPMSelect(getHours(value))
-      );
+      var _this$props6 = this.props,
+          prefixCls = _this$props6.prefixCls,
+          defaultOpenValue = _this$props6.defaultOpenValue,
+          propValue = _this$props6.value;
+      var value = propValue || defaultOpenValue;
+      return /*#__PURE__*/React.createElement("div", {
+        className: "".concat(prefixCls, "-combobox")
+      }, this.getHourSelect(getHours(value)), this.getMinuteSelect(getMinutes(value)), this.getSecondSelect(getSeconds(value)), this.getAMPMSelect(getHours(value)));
     }
   }]);
 
   return Combobox;
 }(Component);
 
-Combobox.propTypes = {
+_defineProperty(Combobox, "propTypes", {
   format: PropTypes.string,
   defaultOpenValue: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   prefixCls: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   onChange: PropTypes.func,
+  onAmPmChange: PropTypes.func,
   showHour: PropTypes.bool,
   showMinute: PropTypes.bool,
   showSecond: PropTypes.bool,
@@ -247,8 +299,9 @@ Combobox.propTypes = {
   disabledMinutes: PropTypes.func,
   disabledSeconds: PropTypes.func,
   onCurrentSelectPanelChange: PropTypes.func,
-  use12Hours: PropTypes.bool
-};
-
+  use12Hours: PropTypes.bool,
+  onEsc: PropTypes.func,
+  isAM: PropTypes.bool
+});
 
 export default Combobox;

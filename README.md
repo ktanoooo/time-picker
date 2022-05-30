@@ -21,6 +21,7 @@ Usage
 ```
 import TimePicker from 'rc-time-picker-date-fns-format-ja';
 import ReactDOM from 'react-dom';
+import 'rc-time-picker-date-fns-format-ja/assets/index.css';
 ReactDOM.render(<TimePicker />, container);
 ```
 
@@ -29,6 +30,7 @@ change from "AM, PM" to "午前, 午後".
 ```
 import TimePicker from 'rc-time-picker-date-fns-format-ja';
 import ReactDOM from 'react-dom';
+import 'rc-time-picker-date-fns-format-ja/assets/index.css';
 ReactDOM.render(<TimePicker format="a h:mm" formatLocale="ja" />, container);
 ```
 
@@ -39,7 +41,7 @@ API
 
 | Name                    | Type                              | Default | Description |
 |-------------------------|-----------------------------------|---------|-------------|
-| prefixCls               | String                            | 'rc-time-picker' | prefixCls of this component |
+| prefixCls               | String                            | 'rc-time-picker-date-fns-format-ja' | prefixCls of this component |
 | clearText               | String                            | 'clear' | clear tooltip of icon |
 | disabled                | Boolean                           | false   | whether picker is disabled |
 | allowEmpty              | Boolean                           | true | allow clearing text |
@@ -49,27 +51,32 @@ API
 | value                   | Date                              | null | current value |
 | placeholder             | String                            | '' | time input's placeholder |
 | className               | String                            | '' | time picker className |
+| id                      | String                            | '' | time picker id |
 | popupClassName          | String                            | '' | time panel className |
+| popupStyle              | object                            | {} | customize popup style
 | showHour                | Boolean                           | true | whether show hour | |
 | showMinute              | Boolean                           | true | whether show minute |
 | showSecond              | Boolean                           | true | whether show second |
 | format                  | String                            | - | date-fns format |
+| formatLocale            | String                            | '' | ja |
 | disabledHours           | Function                          | - | disabled hour options |
 | disabledMinutes         | Function                          | - | disabled minute options |
 | disabledSeconds         | Function                          | - | disabled second options |
 | use12Hours              | Boolean                           | false | 12 hours display mode |
 | hideDisabledOptions     | Boolean                           | false | whether hide disabled options |
 | onChange                | Function                          | null | called when select a different value |
+| onAmPmChange            | Function                          | null | called when select an am/pm value |
 | addon                   | Function                          | - | called from timepicker panel to render some addon to its bottom, like an OK button. Receives panel instance as parameter, to be able to close it like `panel.close()`.|
-| placement               | String                            | bottomLeft | one of ['left','right','top','bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'] |
+| placement               | String                            | bottomLeft | one of ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'] |
 | transitionName          | String                            | ''  |  |
 | name                    | String                            | - | sets the name of the generated input |
-| onOpen                  | Function({ open })                |   | when TimePicker panel is opened      |
+| onOpen                  | Function({ open })                |   | when TimePicker panel is closed      |
 | onClose                 | Function({ open })                |   | when TimePicker panel is opened      |
 | hourStep                | Number                            | 1 | interval between hours in picker  |
 | minuteStep              | Number                            | 1 | interval between minutes in picker  |
 | secondStep              | Number                            | 1 | interval between seconds in picker  |
 | focusOnOpen             | Boolean                           | false | automatically focus the input when the picker opens |
+| inputReadOnly             | Boolean                           | false | set input to read only |
 | inputIcon             | ReactNode                           |  | specific the select icon. |
 | clearIcon             | ReactNode                           |  | specific the clear icon. |
 

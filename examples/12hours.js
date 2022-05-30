@@ -23,6 +23,7 @@ ReactDom.render(
     onChange={onChange}
     format={format}
     use12Hours
+    inputReadOnly
   />,
   document.getElementById('__react-content')
 );
