@@ -57,6 +57,7 @@ class Panel extends Component {
     addon: PropTypes.func,
     focusOnOpen: PropTypes.bool,
     onKeyDown: PropTypes.func,
+    clearIcon: PropTypes.node,
   };
 
   static defaultProps = {
@@ -127,6 +128,7 @@ class Panel extends Component {
       hourStep,
       minuteStep,
       secondStep,
+      clearIcon,
     } = this.props;
 
     const { value, currentSelectPanel } = this.state;
@@ -187,6 +189,7 @@ class Panel extends Component {
           allowEmpty={allowEmpty}
           focusOnOpen={focusOnOpen}
           onKeyDown={onKeyDown}
+          clearIcon={clearIcon}
         />
         <Combobox
           prefixCls={prefixCls}

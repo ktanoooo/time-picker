@@ -57,6 +57,8 @@ export default class Picker extends Component {
     focusOnOpen: PropTypes.bool,
     onKeyDown: PropTypes.func,
     autoFocus: PropTypes.bool,
+    inputIcon: PropTypes.node,
+    clearIcon: PropTypes.node,
   };
 
   static defaultProps = {
@@ -193,6 +195,7 @@ export default class Picker extends Component {
       minuteStep,
       secondStep,
       formatLocale,
+      clearIcon,
     } = this.props;
     return (
       <Panel
@@ -222,6 +225,7 @@ export default class Picker extends Component {
         addon={addon}
         focusOnOpen={focusOnOpen}
         onKeyDown={onKeyDown}
+        clearIcon={clearIcon}
       />
     );
   }
@@ -290,6 +294,7 @@ export default class Picker extends Component {
       onBlur,
       autoFocus,
       formatLocale,
+      inputIcon,
     } = this.props;
     const { open, value } = this.state;
     const popupClassName = this.getPopupClassName();
@@ -327,7 +332,7 @@ export default class Picker extends Component {
             autoFocus={autoFocus}
             onChange={noop}
           />
-          <span className={`${prefixCls}-icon`} />
+          {inputIcon || <span className={`${prefixCls}-icon`} />}{' '}
         </span>
       </Trigger>
     );
