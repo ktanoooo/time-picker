@@ -2,6 +2,9 @@
 
 React TimePicker
 
+`date-fns`ベースのtimepickerをforkして、`午前, 午後`表記に対応したもの。
+`format="a h:mm"`, `formatLocale="ja"`を付与すればいい。
+
 [![NPM version][npm-image]][npm-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
