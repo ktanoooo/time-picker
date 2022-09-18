@@ -137,7 +137,6 @@
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 .rc-time-picker-date-fns-format-ja-panel-select li:hover {
